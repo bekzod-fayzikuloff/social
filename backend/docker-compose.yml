@@ -1,0 +1,28 @@
+version: "3.5"
+
+services:
+  app:
+    restart: always
+    command: bash -c "cd src && python manage.py runserver 0.0.0.0:8000"
+    build: .
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - ./.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5433:5432"  # 5432 PORT in my PC already bind
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+volumes:
+  postgres_data:
