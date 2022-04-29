@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import PrivateRoute from "./services/utils/PrivateRoute";
-import {AuthProvider} from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
 

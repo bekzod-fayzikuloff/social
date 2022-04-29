@@ -16,12 +16,14 @@ const AuthProvider = ({ children }) => {
       localStorage.getItem('authToken') ? jwt_decode(localStorage.getItem('authToken')) : null
   ))
 
+  const [loading, setLoading] = useState(true)
+
   const navigate = useNavigate()
 
   const loginUser = async (e) => {
     e.preventDefault()
+
     const loginUrl = `${process.env.REACT_APP_BACKEND_URL}/token/`
-    console.log(loginUrl)
 
     const response = await fetch(loginUrl, {
       method: "POST",
@@ -54,6 +56,51 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("authToken")
     navigate('/login')
   }
+
+  const updateToken = async () => {
+    const loginUrl = `${process.env.REACT_APP_BACKEND_URL}/token/refresh/`
+
+    const response = await fetch(loginUrl, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        "refresh": authToken?.refresh
+      })
+    })
+
+    const responseData = await response.json()
+
+    if (response.status === 200) {
+      setAuthToken(responseData)
+      setUser(jwt_decode(responseData.access))
+      localStorage.setItem("authToken", JSON.stringify(responseData))
+    } else {
+      logoutUser()
+    }
+
+    if (loading) {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (loading) {
+      updateToken()
+    }
+
+    const intervalDelay = 1000 * ( 60 * 5 )
+
+    let interval = setInterval(() => {
+      if (authToken) {
+        updateToken()
+      }
+    }, intervalDelay)
+
+    return () => clearInterval(interval)
+
+  }, [authToken, loading, updateToken])
 
   let contextData = {
     user,
