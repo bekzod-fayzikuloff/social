@@ -20,6 +20,7 @@ from common.utils.docs_schema import schema_view
 
 api_routes = [
     path("", include("apps.auth.urls")),
+    path("", include("apps.userprofile.urls")),
 ]
 
 docs_patterns = [
