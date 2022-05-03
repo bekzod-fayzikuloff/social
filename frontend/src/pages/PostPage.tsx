@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { PageNotFound } from "./NotFoundPage";
+import PostModal from "../components/PostModal";
 
 const PostPage = () => {
   const { authToken } = useContext(AuthContext)
@@ -33,8 +34,7 @@ const PostPage = () => {
 
   return (
       <div>
-        {isExist ? <p>{ JSON.stringify(post) }</p> : <PageNotFound />}
-
+        {isExist ? <PostModal post={post} posts={null}/> : <PageNotFound />}
       </div>
     )
 }

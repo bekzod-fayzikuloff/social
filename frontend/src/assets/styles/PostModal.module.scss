@@ -1,0 +1,22 @@
+.root {
+  width: 100%;
+  background-color: #4f4a4a;
+  height: 500px;
+}
+
+.headline{
+  display: flex;
+  justify-content: flex-end;
+
+  .close__button {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: #fff;
+    font-size: 22px;
+    color: #91a0a6;
+  }
+  .close__button:hover {
+    color: #2a3339;
+  }
+}
