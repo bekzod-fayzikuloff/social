@@ -8,6 +8,7 @@ import { AuthProvider } from "./context/AuthContext";
 import RegisterPage from "./pages/RegisterPage";
 import ProfilePage from "./pages/ProfilePage";
 import {MainLayout} from "./layouts/MainLayout";
+import PostPage from "./pages/PostPage";
 
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
 
             <Route path='/' element={<PrivateRoute/>}>
               <Route path='/profile' element={<ProfilePage/>} />
-              <Route path='/' element={<NewsFeedPage/>} />
+              <Route path="profile/p/:postId" element={<PostPage />} />
+              <Route index element={<NewsFeedPage/>} />
+              <Route path="*" element={<p>Jopa</p>} />
             </Route>
 
             <Route path="/login" element={<LoginPage />} />
