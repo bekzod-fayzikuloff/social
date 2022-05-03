@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
-const HomePage = () => {
-    const [result, setResult] = useState()
+const NewsFeedPage = () => {
+    const [result, setResult] = useState([])
     const { authToken, logoutUser } = useContext(AuthContext)
 
     useEffect(() => {
@@ -29,9 +29,12 @@ const HomePage = () => {
       }
     }
 
-    return (
-      <h1>{ result }</h1>
+
+  return (
+      <div>
+        <p>{JSON.stringify(result)}</p>
+      </div>
     )
 }
 
-export default HomePage;
+export default NewsFeedPage;
