@@ -1,0 +1,52 @@
+$fcolor: #343131;
+$fcolorHover: #fc9e19;
+
+
+main {
+
+  p {
+    text-align: center;
+    padding: 20px 0 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+
+  a {
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: $fcolor;
+  }
+
+  a:hover {
+    color: $fcolorHover;
+  }
+
+  .grid__wrapper {
+    display: flex;
+    justify-content: center;
+    .grid {
+      width: 70%;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    div > div {
+      text-align: center;
+      padding: 10px;
+      height: 350px;
+      width: 100%;
+
+      img {
+
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+
+      }
+    }
+  }
+}

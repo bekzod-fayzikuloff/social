@@ -104,13 +104,14 @@ const AuthProvider = ({ children }) => {
 
   let contextData = {
     user,
+    authToken,
     loginUser,
     logoutUser
   }
 
   return (
     <AuthContext.Provider value={ contextData }>
-      { children }
+      { loading ? null : children }
     </AuthContext.Provider>
   )
 }

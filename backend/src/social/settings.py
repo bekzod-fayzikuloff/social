@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
     "apps.auth",
+    "apps.userprofile",
+    "apps.newsfeed"
 ]
 
 MIDDLEWARE = [
@@ -147,7 +149,7 @@ SIMPLE_JWT_SIGNING_KEY = os.environ.get("SIMPLE_JWT_SIGNING_KEY")
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=6),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=90),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
@@ -182,6 +184,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]

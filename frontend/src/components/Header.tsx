@@ -1,21 +1,28 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+
+import SearchInput from "./SearchInput";
+import HeaderNavIcons from "./HeaderNavIcons";
+import style from "../assets/styles/Header.module.scss"
 
 
 const Header = () => {
-  const { user, logoutUser } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   return (
-    <>
-      <Link to={'/'}>Home</Link>
+    <header className={style.header}>
+      <div className={style.title}>
+        <NavLink to={"/"}>Falcon</NavLink>
+      </div>
       { user ?
-        <p onClick={ logoutUser }>Logout</p>
+        <>
+          <SearchInput />
+          <HeaderNavIcons className={style.social_network}/>
+        </>
           :
         <Link to={'/login'}>login</Link>
       }
-
-      { user && user.username }
-    </>
+    </header>
   )
 }
 
