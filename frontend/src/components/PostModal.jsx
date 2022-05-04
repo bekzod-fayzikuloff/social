@@ -31,7 +31,7 @@ const PostModal = ({ post, posts }) => {
             </div>
 
             <div className={style.post__description}>
-              <p>{post?.user}</p>
+              <p>{post?.user.username}</p>
               <p>{post?.description}</p>
             </div>
           </div>

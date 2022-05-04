@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 
 import { useNavigate } from "react-router-dom";
+import { sendData } from "../services/utils/sendRequest";
 
 const AuthContext = createContext()
 
@@ -57,6 +58,29 @@ const AuthProvider = ({ children }) => {
     navigate('/login')
   }
 
+  const registerUser = async (e) => {
+    const registerUrl = `${process.env.REACT_APP_BACKEND_URL}/register/`
+    const userCredentials = {
+      username: e.target.username.value,
+      password: e.target.password.value,
+      password2: e.target.password2.value,
+      email: e.target.email.value,
+      first_name: e.target.first_name.value,
+      last_name: e.target.last_name.value
+    }
+    const response = await sendData(
+      registerUrl,
+      userCredentials
+    )
+    if (response.status === 200) {
+      alert("ok")
+      navigate("/login")
+    } else {
+      alert("bad")
+    }
+  }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateToken = async () => {
     const loginUrl = `${process.env.REACT_APP_BACKEND_URL}/token/refresh/`
 
@@ -106,7 +130,8 @@ const AuthProvider = ({ children }) => {
     user,
     authToken,
     loginUser,
-    logoutUser
+    logoutUser,
+    registerUser
   }
 
   return (

@@ -1,0 +1,24 @@
+.root {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 7%;
+  padding-top: 7%;
+  .root__form {
+    padding: 30px 90px 50px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+
+    p{
+      padding: 20px 20px;
+    }
+
+    .register__headline {
+      text-decoration: none;
+      color: #3668cd;
+    }
+  }
+}
+.register {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
