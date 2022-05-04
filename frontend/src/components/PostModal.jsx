@@ -3,18 +3,6 @@ import Modal from 'react-modal';
 import { useNavigate } from "react-router-dom";
 import style from "../assets/styles/PostModal.module.scss"
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: '-20%',
-    marginRight: '-40%',
-    transform: 'translate(-50%, -50%)',
-  },
-
-};
-
 Modal.setAppElement('#root');
 
 const PostModal = ({ post, posts }) => {
@@ -31,12 +19,23 @@ const PostModal = ({ post, posts }) => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
       >
         <div className={style.headline}>
           <button className={style.close__button} onClick={closeModal}>&#x2715;</button>
         </div>
-        <div>{JSON.stringify(post)}</div>
+        <div>
+          <div className={style.card__root}>
+
+            <div className={style.image__card}>
+              <img src={post?.image} alt="fdf"/>
+            </div>
+
+            <div className={style.post__description}>
+              <p>{post?.user}</p>
+              <p>{post?.description}</p>
+            </div>
+          </div>
+        </div>
 
       </Modal>
     </div>

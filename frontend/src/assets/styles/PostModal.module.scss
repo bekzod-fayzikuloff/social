@@ -7,6 +7,7 @@
 .headline{
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 10px;
 
   .close__button {
     padding: 0;
@@ -20,3 +21,23 @@
     color: #2a3339;
   }
 }
+
+.card__root {
+  display: flex;
+  justify-content: space-between;
+
+  .image__card {
+    display: flex;
+    img {
+      max-width: 100%;
+      max-height: 50%;
+    }
+    width: 70%;
+    height: 80%;
+    object-fit: contain;
+  }
+  .post__description {
+    width: 30%;
+  }
+}
+
