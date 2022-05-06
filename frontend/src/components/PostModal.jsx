@@ -49,7 +49,9 @@ const PostModal = ({ post, authToken }) => {
         content: e.target.comment.value
       },
       authToken
-    )
+    ).then(r => {
+
+    })
     setCommentValue('')
 
   }

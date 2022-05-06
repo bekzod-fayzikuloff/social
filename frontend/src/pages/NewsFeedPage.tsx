@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { getResponse } from "../services/utils/sendRequest";
 
 const NewsFeedPage = () => {
     const [result, setResult] = useState([])
@@ -12,15 +13,10 @@ const NewsFeedPage = () => {
     }, [])
 
     async function getResult()  {
-      const response = await fetch(
+      const response = await getResponse(
         `${process.env.REACT_APP_BACKEND_URL}/`,
-        {
-          method: "GET",
-          headers: {
-            "Content-type": "application/json",
-            "Authorization": `Bearer ${String(authToken.access)}`
-          }
-        });
+        String(authToken.access)
+      )
       const responseResult = await response.json()
       if (response.status === 200) {
         setResult(responseResult)

@@ -21,6 +21,7 @@ function App() {
 
             <Route path='/' element={<PrivateRoute/>}>
               <Route path='/profile' element={<ProfilePage/>} />
+              <Route path="/profile/settings" element={<p>Settings</p>} />
               <Route path="profile/p/:postId" element={<PostPage />} />
               <Route index element={<NewsFeedPage/>} />
               <Route path="*" element={<PageNotFound />} />

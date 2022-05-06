@@ -1,0 +1,29 @@
+
+.profile__modal {
+  display: flex;
+  justify-content: end;
+
+  .profile__modal__content {
+    margin-top: 6vh;
+    margin-right: 19vh;
+    border: 2px gray solid;
+    padding: 20px;
+    position: center;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 120px;
+    a {
+      color: #0a0a0a;
+      text-decoration: none;
+    }
+  }
+}
+
+.profile__modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: none;
+}

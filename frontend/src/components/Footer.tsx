@@ -45,7 +45,7 @@ const Footer = () => {
                 </div>
                 <div className={style.social__wrapper}>
                     <div className={style.footer__description}>
-                        <p>Copyright ©2022 | This about Cats</p>
+                        <p>Copyright ©2022 | This about Your Life</p>
                     </div>
                 </div>
 

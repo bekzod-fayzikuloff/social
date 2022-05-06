@@ -111,14 +111,14 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (loading) {
-      updateToken()
+      updateToken().then()
     }
 
     const intervalDelay = 1000 * ( 60 * 5 )
 
     let interval = setInterval(() => {
       if (authToken) {
-        updateToken()
+        updateToken().then()
       }
     }, intervalDelay)
 

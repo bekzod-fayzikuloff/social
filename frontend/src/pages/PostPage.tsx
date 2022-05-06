@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { PageNotFound } from "./NotFoundPage";
 import PostModal from "../components/PostModal";
+import { getResponse } from "../services/utils/sendRequest";
 
 const PostPage = () => {
   const { authToken } = useContext(AuthContext)
@@ -12,15 +13,10 @@ const PostPage = () => {
 
   useEffect(() => {
     async function getResult()  {
-      const response = await fetch(
+      const response = await getResponse(
         `${process.env.REACT_APP_BACKEND_URL}/profile/post/${postId}/`,
-        {
-          method: "GET",
-          headers: {
-            "Content-type": "application/json",
-            "Authorization": `Bearer ${String(authToken.access)}`
-          }
-        });
+        String(authToken.access)
+      )
       const responseResult = await response.json()
       if (response.status === 200) {
         setPost(responseResult)
@@ -30,7 +26,7 @@ const PostPage = () => {
     }
 
     getResult().then()
-  }, [])
+  }, [authToken.access, postId])
 
   return (
       <div>

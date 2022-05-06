@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { clickRedirect } from "../services/utils/routeService";
 import style from "../assets/styles/Profile.module.scss"
+import { getResponse } from "../services/utils/sendRequest";
 
 const ProfilePage = () => {
   const [result, setResult]: any = useState([])
@@ -13,18 +14,14 @@ const ProfilePage = () => {
     getResult().then(
 
     )
-  }, [])
+  }, [getResult])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function getResult()  {
-    const response = await fetch(
+    const response = await getResponse(
       `${process.env.REACT_APP_BACKEND_URL}/profile/`,
-      {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-          "Authorization": `Bearer ${String(authToken.access)}`
-        }
-      });
+      String(authToken.access)
+    )
     const responseResult = await response.json()
     if (response.status === 200) {
       setResult(responseResult)

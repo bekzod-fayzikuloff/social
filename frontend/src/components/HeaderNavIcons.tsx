@@ -1,19 +1,17 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useState } from "react";
+import {ProfileModal} from "./ProfileModal";
 
 export default function HeaderNavIcons(props: { className: string; }) {
 
-    const [focus, setFocus] = useState(false)
+    const [modalIsOpen, setModalIsOpen] = useState(false)
 
     const handleClick = () => {
-        setFocus(prevState => !prevState)
+        setModalIsOpen(prevState => !prevState)
     }
 
     const socialNetworks = [
         {
             id: 1,
-            description: "instagram",
-            resourcePath: "https://www.instagram.com/",
             logoUrl: "https://cdn-icons-png.flaticon.com/512/64/64572.png"
         }
     ]
@@ -22,9 +20,12 @@ export default function HeaderNavIcons(props: { className: string; }) {
         <div className={props.className}>
             {socialNetworks.map(item => {
                 return (
-                    <Link key={item.id} to="/profile">
-                        <img src={item.logoUrl} alt={item.description}/>
-                    </Link>
+                  <React.Fragment>
+                    <span onClick={handleClick} key={item.id}>
+                      <img src={item.logoUrl} alt=""/>
+                    </span>
+                    <ProfileModal isOpen={modalIsOpen}  closeModal={() => setModalIsOpen(false)}/>
+                  </React.Fragment>
                 )
             })}
         </div>
