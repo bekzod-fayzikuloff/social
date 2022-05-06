@@ -38,6 +38,20 @@
   }
   .post__description {
     width: 30%;
+    background-color: #f6f6f6;
+    padding: 14px;
+
+    .post__comment_input {
+      display: flex;
+      justify-content: center;
+      background-color: #fff;
+    }
+
+    .username__headline {
+      padding: 5px;
+      text-decoration: none;
+      color: #221717;
+    }
   }
 }
 

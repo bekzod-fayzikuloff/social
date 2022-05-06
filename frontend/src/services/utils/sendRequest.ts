@@ -1,9 +1,6 @@
 const sendData = async (resourceUrl: string, data: object) => {
   return await fetch(resourceUrl, {
     method: "POST",
-    mode: 'cors',
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
     headers: {
       "Content-type": "application/json"
     },
@@ -13,4 +10,27 @@ const sendData = async (resourceUrl: string, data: object) => {
   });
 }
 
-export { sendData };
+const sendDataAuthRequire = async (resourceUrl: string, data: object, authToken: any) => {
+  return await fetch(resourceUrl, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ${String(authToken.access)}`
+    },
+    body: JSON.stringify(
+      data
+    )
+  });
+}
+
+const getResponse = async (resourceUrl: string, authTokenAccess: string) => {
+  return await fetch(resourceUrl, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": `Bearer ${authTokenAccess}`
+    },
+  });
+}
+
+export { sendData, sendDataAuthRequire, getResponse };

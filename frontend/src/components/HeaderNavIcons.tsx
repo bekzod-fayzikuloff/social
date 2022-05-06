@@ -1,23 +1,20 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
+
 export default function HeaderNavIcons(props: { className: string; }) {
+
+    const [focus, setFocus] = useState(false)
+
+    const handleClick = () => {
+        setFocus(prevState => !prevState)
+    }
 
     const socialNetworks = [
         {
             id: 1,
             description: "instagram",
             resourcePath: "https://www.instagram.com/",
-            logoUrl: "https://cdn-icons-png.flaticon.com/512/87/87390.png"
-        },
-        {
-            id: 2,
-            description: "facebook",
-            resourcePath: "https://www.facebook.com/",
-            logoUrl: "https://cdn-icons-png.flaticon.com/512/2111/2111392.png"
-        },
-        {
-            id: 3,
-            description: "github",
-            resourcePath: "https://github.com/",
-            logoUrl: "https://cdn-icons-png.flaticon.com/512/1051/1051377.png"
+            logoUrl: "https://cdn-icons-png.flaticon.com/512/64/64572.png"
         }
     ]
 
@@ -25,9 +22,9 @@ export default function HeaderNavIcons(props: { className: string; }) {
         <div className={props.className}>
             {socialNetworks.map(item => {
                 return (
-                    <a key={item.id} href={item.resourcePath}>
+                    <Link key={item.id} to="/profile">
                         <img src={item.logoUrl} alt={item.description}/>
-                    </a>
+                    </Link>
                 )
             })}
         </div>

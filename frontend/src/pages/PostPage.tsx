@@ -34,7 +34,7 @@ const PostPage = () => {
 
   return (
       <div>
-        {isExist ? <PostModal post={post} posts={null}/> : <PageNotFound />}
+        {isExist ? <PostModal post={post} authToken={authToken}/> : <PageNotFound />}
       </div>
     )
 }

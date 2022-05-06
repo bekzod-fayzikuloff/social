@@ -59,6 +59,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const registerUser = async (e) => {
+    e.preventDefault()
     const registerUrl = `${process.env.REACT_APP_BACKEND_URL}/register/`
     const userCredentials = {
       username: e.target.username.value,
@@ -72,8 +73,7 @@ const AuthProvider = ({ children }) => {
       registerUrl,
       userCredentials
     )
-    if (response.status === 200) {
-      alert("ok")
+    if (response.status !== 400) {
       navigate("/login")
     } else {
       alert("bad")
