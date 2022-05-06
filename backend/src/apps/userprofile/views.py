@@ -4,7 +4,6 @@ from rest_framework import status
 from rest_framework.decorators import api_view, action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import AllowAny
 
 from .models import Profile, Follower
 from .serializers import ProfileSerializer, FollowerSerializer
@@ -35,7 +34,6 @@ def get_followers(request):
 class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [AllowAny, ]
 
     @action(
         methods=["POST"],
